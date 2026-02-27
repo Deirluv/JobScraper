@@ -4,13 +4,14 @@
     {
         public int Id { get; set; }
         public string ExternalId { get; set; } = string.Empty;
-        public string JobTitle { get; set; } = string.Empty;
-        public string JobCompany { get; set; } = string.Empty;
-        public string JobDescription { get; set; } = string.Empty;
-        public string JobLocation {  get; set; } = string.Empty;
+        public string Source { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public string Company { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string Location {  get; set; } = string.Empty;
         public string ApplicantsCount {  get; set; } = string.Empty;
-        public string JobLevel { get; set; } = string.Empty;
-        public string JobResponsibilities { get; set; } = string.Empty;
+        public string Level { get; set; } = string.Empty;
+        public string Responsibilities { get; set; } = string.Empty;
         public string EmploymentType { get; set; } = string.Empty;
         public string Industries { get; set; } = string.Empty;
         public string PostedDate { get; set; } = string.Empty; 

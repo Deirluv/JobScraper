@@ -4,6 +4,6 @@ namespace JobScraper.Abstractions
 {
     public interface IJobParser
     {
-        public List<Job> Parse(string html);
+        public Task<List<Job>> ParseAsync(string html);
     }
 }

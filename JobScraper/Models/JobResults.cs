@@ -1,6 +1,6 @@
 ﻿namespace JobScraper.Models
 {
-    internal class JobResults
+    public class JobResults
     {
         public List<Job> Results { get; set; } = new List<Job>();
         public int TotalFound => Results.Count;
