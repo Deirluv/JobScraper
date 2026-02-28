@@ -2,7 +2,7 @@
 
 namespace JobScraper.Abstractions
 {
-    internal interface IDataStorage
+    public interface IDataStorage
     {
         public Task SaveAsync(List<Job> vacancies);
     }
