@@ -18,7 +18,7 @@ A console-based web scraper built with **C#** and **.NET 8**. This project demon
 * **Browser Automation:** [Playwright for .NET](https://playwright.dev/dotnet/)
 * **HTML Parsing:** [AngleSharp](https://anglesharp.github.io/)
 * **Logging:** Serilog
-* **Data Format:** Database with Entity Framework
+* **Data Format:** File Storage saving in **Document** folder
 
 ---
 
