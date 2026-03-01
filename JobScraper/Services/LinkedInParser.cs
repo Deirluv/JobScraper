@@ -1,6 +1,7 @@
 ﻿using AngleSharp;
 using JobScraper.Abstractions;
 using JobScraper.Models;
+using Microsoft.Extensions.Logging;
 
 namespace JobScraper.Services
 {
@@ -9,6 +10,13 @@ namespace JobScraper.Services
         /// <summary>
         /// Parses the provided HTML content to extract job information and returns a list of Jobs.
         /// </summary>
+
+        private readonly ILogger<LinkedInParser> _logger;
+
+        public LinkedInParser(ILogger<LinkedInParser> logger)
+        {
+            _logger = logger;
+        }
 
         public async Task<List<Job>> ParseAsync(string html)
         {
@@ -27,6 +35,7 @@ namespace JobScraper.Services
 
             if(jobContainer != null)
             {
+                _logger.LogInformation("Found job container, parsing job cards...");
                 var cardsList = jobContainer.QuerySelectorAll("li");
 
                 foreach (var card in cardsList)

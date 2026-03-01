@@ -1,4 +1,5 @@
 ﻿using JobScraper.Abstractions;
+using Microsoft.Extensions.Logging;
 using Microsoft.Playwright;
 
 namespace JobScraper.Services
@@ -9,6 +10,12 @@ namespace JobScraper.Services
         private IBrowser? _browser;
         private IPage? _page;
 
+        private readonly ILogger<PlayWrightBrowserService> _logger;
+
+        public PlayWrightBrowserService(ILogger<PlayWrightBrowserService> logger)
+        {
+            _logger = logger;
+        }
 
         /// <summary>
         /// Initializes the Playwright browser instance.
@@ -21,6 +28,8 @@ namespace JobScraper.Services
                 Headless = true,
                 SlowMo = 100
             });
+
+            _logger.LogInformation("Playwright browser initialized successfully.");
         }
 
         /// <summary>
@@ -34,6 +43,7 @@ namespace JobScraper.Services
             {
                 UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
             });
+
 
             _page = await context.NewPageAsync();
             await _page.GotoAsync(url, new PageGotoOptions { WaitUntil = WaitUntilState.NetworkIdle });
