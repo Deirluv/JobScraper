@@ -7,9 +7,7 @@ namespace JobScraper.Services
 {
     public class LinkedInParser : IJobParser
     {
-        /// <summary>
-        /// Parses the provided HTML content to extract job information and returns a list of Jobs.
-        /// </summary>
+        public string JobSource => "LinkedIn";
 
         private readonly ILogger<LinkedInParser> _logger;
 
@@ -17,6 +15,10 @@ namespace JobScraper.Services
         {
             _logger = logger;
         }
+
+        /// <summary>
+        /// Parses the provided HTML content to extract job information and returns a list of Jobs.
+        /// </summary>
 
         public async Task<List<Job>> ParseAsync(string html)
         {

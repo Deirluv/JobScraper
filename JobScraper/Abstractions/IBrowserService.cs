@@ -2,7 +2,7 @@
 {
     public interface IBrowserService : IAsyncDisposable
     {
-        public Task<string> FetchHtmlAsync(string url);
-        public Task ScrollPageAsync();
+        public Task<string> FetchHtmlAsync(string url, int maxJobs);
+        public Task ScrollPageAsync(int maxJobs);
     }
 }

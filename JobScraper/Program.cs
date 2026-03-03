@@ -9,11 +9,13 @@ class PlaywrightExample
 {
     public static async Task Main()
     {
+        // Configure Serilog for logging
         Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Information()
             .WriteTo.Console()
             .CreateLogger();
 
+        // Set up the host and dependency injection
         var host = Host.CreateDefaultBuilder()
             .UseSerilog()
             .ConfigureServices(services =>
@@ -33,7 +35,8 @@ class PlaywrightExample
             await engine.RunAsync(new JobSettings
             {
                 SearchQuery = GetRequiredInput("Enter the job keywords: "),
-                Country = GetRequiredInput("Enter the country: ")
+                Country = GetRequiredInput("Enter the country: "),
+                MaxJobs = int.TryParse(GetRequiredInput("Enter the maximum number of jobs to scrape (default = 25 jobs): "), out int results) ? results : 25
             });
         }
         catch (Exception ex)

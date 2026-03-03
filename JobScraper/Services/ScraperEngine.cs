@@ -28,7 +28,7 @@ namespace JobScraper.Services
             {
                 var url = $"{_baseUrl}?keywords={Uri.EscapeDataString(jobSettings.SearchQuery)}&location={Uri.EscapeDataString(jobSettings.Country)}";
                 _logger.LogInformation("Starting scraping process for URL: {Url}", url);
-                var html = await _browserService.FetchHtmlAsync(url);
+                var html = await _browserService.FetchHtmlAsync(url, jobSettings.MaxJobs);
                 var jobs = await _jobParser.ParseAsync(html);
                 _logger.LogInformation("Parsed {Count} job listings.", jobs.Count);
                 await _dataStorage.SaveAsync(jobs, jobSettings);
